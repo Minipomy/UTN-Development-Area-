@@ -11,6 +11,7 @@ ejercitación y TP para rendir el examen de ingreso
 
 
 
+
 -----
 
 ### ¿Cómo está organizado?
@@ -59,6 +60,3 @@ ejercitación y TP para rendir el examen de ingreso
 
 * Examen de ingreso 2023 - Parte 2  https://www.youtube.com/watch?v=5Dc2_TRooks
 
-**El codigo y los videos fueron realizados por:**
-* :muscle:Mauricio Davila .[github: Mauricio Davila](https://github.com/davilamr)
-* :muscle:Eriquez Joaquin .[github: Eriquez Joaquin](https://github.com/joaquinenriquez)
