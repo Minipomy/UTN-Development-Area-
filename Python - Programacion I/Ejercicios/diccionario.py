@@ -349,5 +349,10 @@ diccionario_contactos_telefono = {'Maxi' : 24343534 , 'Brian' : 42256336 , 'Irin
 contacto_ingresado = input("Por favor, ingresar nombre de un contacto:\n")
 telefono_ingresado = input("Por favor, ingresar el numero de telefono:\n")
 if(diccionario_contactos_telefono.get(contacto_ingresado, 'NOT FOUND') == 'NOT FOUND'):
-    telefono_ingresado = int(input("Por favor, es un contacto nuevo, ingresar el telefono:\n"))
-diccionario_contactos_telefono[contacto_ingresado] = telefono_ingresado
+    print("Es un contacto nuevo, cargandolo...")
+    telefono_ingresado = int(telefono_ingresado)
+    diccionario_contactos_telefono[contacto_ingresado] = telefono_ingresado
+else:
+    print("Contacto ya existe, actualizando...")
+    diccionario_contactos_telefono[contacto_ingresado] = diccionario_contactos_telefono[contacto_ingresado]
+print(diccionario_contactos_telefono)
