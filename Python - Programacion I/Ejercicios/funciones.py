@@ -65,16 +65,26 @@ def numero_primo(numero:int) -> bool:
             return False
     return True
 
+'''
+Crear una función que calcule el área de un triángulo. 
+Recibe dos parámetros (base y altura) y }
+devuelve el área.
+'''
+
+def area_triangulo(base:float, altura:float) -> float:
+    area = float((base * altura) / 2)
+    return(area) 
+
 #---------------------------EJ1------------------------------
-print(f'{convertir_celsius_a_fahrenheit(35.3):.2f}')
+print("La conversion final es: "f'{convertir_celsius_a_fahrenheit(35.3):.2f}')
 #---------------------------EJ2------------------------------
-print(f'{area_circulo(2):.2f}')
+print("El area del circulo es: ", f'{area_circulo(2):.2f}')
 #---------------------------EJ3------------------------------
-print(f'{calcula_descuento_en_producto(500, 10):.2f}')
+print("El precio final con descuento aplicado es: ", f'{calcula_descuento_en_producto(500, 10):.2f}')
 #---------------------------EJ4------------------------------
-print(promedio_edades_personas(lista_alumnos))
+print("El promedio de edades es: ", promedio_edades_personas(lista_alumnos))
 #---------------------------EJ5------------------------------
-print(numero_primo(11))
+print("el siguiente numero es: ", numero_primo(11))
 #---------------------------EJ2------------------------------
-print()
+print("El area del triangulo es: ", f'{area_triangulo(4, 8):.2f}')
 
