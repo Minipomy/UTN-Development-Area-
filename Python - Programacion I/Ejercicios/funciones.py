@@ -75,6 +75,31 @@ def area_triangulo(base:float, altura:float) -> float:
     area = float((base * altura) / 2)
     return(area) 
 
+
+'''
+Crear una función que calcule el máximo común divisor de dos números. 
+Recibe dos parámetros (números) y 
+devuelve el máximo común divisor.
+'''
+
+def mcd(numero_a:int, numero_b:int) -> max:
+    numero_t = 0
+    while numero_b != 0:
+        numero_t = numero_b
+        numero_b = numero_a % numero_b
+        numero_a = numero_t
+    return numero_a
+
+
+'''
+Crear una función que verifique si un número es par o impar. 
+Recibe un número como parámetro y 
+devuelve True si es par o False si es impar.
+'''
+
+def es_par(numero:int) -> bool:
+    return(numero % 2 == 0)
+
 #---------------------------EJ1------------------------------
 print("La conversion final es: "f'{convertir_celsius_a_fahrenheit(35.3):.2f}')
 #---------------------------EJ2------------------------------
@@ -85,6 +110,10 @@ print("El precio final con descuento aplicado es: ", f'{calcula_descuento_en_pro
 print("El promedio de edades es: ", promedio_edades_personas(lista_alumnos))
 #---------------------------EJ5------------------------------
 print("el siguiente numero es: ", numero_primo(11))
-#---------------------------EJ2------------------------------
+#---------------------------EJ6------------------------------
 print("El area del triangulo es: ", f'{area_triangulo(4, 8):.2f}')
+#---------------------------EJ7------------------------------
+print("El MCD es: ", f'{mcd(4, 8)}')
+#---------------------------EJ7------------------------------
+print("El siguiente numero es: ", f'{es_par(11)}')
 
