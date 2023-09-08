@@ -50,6 +50,21 @@ def promedio_edades_personas(lista:list) -> int:
         contador_edades += 1
     return(acumulador_edades / contador_edades)
 
+
+'''
+Crear una función que determine si un número es primo o no. 
+Recibe un parámetro (número) y 
+devuelve True si es primo y False si no lo es.
+'''
+
+def numero_primo(numero:int) -> bool:
+    if numero < 2:
+        return False
+    for i in range(2, int(numero ** 0.5) + 1):
+        if numero % i == 0:
+            return False
+    return True
+
 #---------------------------EJ1------------------------------
 print(f'{convertir_celsius_a_fahrenheit(35.3):.2f}')
 #---------------------------EJ2------------------------------
@@ -59,7 +74,7 @@ print(f'{calcula_descuento_en_producto(500, 10):.2f}')
 #---------------------------EJ4------------------------------
 print(promedio_edades_personas(lista_alumnos))
 #---------------------------EJ5------------------------------
-print()
+print(numero_primo(11))
 #---------------------------EJ2------------------------------
 print()
 
