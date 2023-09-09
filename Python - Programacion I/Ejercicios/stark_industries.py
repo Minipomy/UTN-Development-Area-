@@ -379,7 +379,7 @@ def promedio_altura_de_heroes(lista:list) -> str:
     for heroe in lista:
         acumulador_altura += float(heroe.get('altura', 0))
         contador_altura += 1
-    promedio = acumulador_altura / contador_altura
+    promedio = float(acumulador_altura / contador_altura)
     return(promedio)
 
 def identidades_maximos_minimos(maximo:max, minimo:min) -> str:
@@ -412,10 +412,26 @@ def heroe_mas_menos_pesados(lista:list) -> list:
             lista_heroe[3] = float(heroe.get('peso', 'ERROR'))
     return(lista_heroe)
 
-print(imprimir_nombres_de_superheroes(lista_personajes))
-print(imprimir_altura_de_superheroes(lista_personajes))
-print(heroe_mas_alto(lista_personajes))
-print(heroe_mas_bajo(lista_personajes))
-print(promedio_altura_de_heroes(lista_personajes))
-print(identidades_maximos_minimos(heroe_mas_alto(lista_personajes), heroe_mas_bajo(lista_personajes)))
-print(heroe_mas_menos_pesados(lista_personajes))
+def ordenar_informacion(lista):
+    for heroe in imprimir_nombres_de_superheroes(lista):
+        print(f"Esta el heroe: {heroe}")
+
+    for altura in imprimir_altura_de_superheroes(lista):
+        print(f"Las alturas son: {altura}")
+    
+    print(f"El heroe mas alto es: {heroe_mas_alto(lista)}")
+    print(f"El heroe mas bajo es: {heroe_mas_bajo(lista)}")
+    print(f'Las identidades de los heroes ALTOS y BAJOS son: {identidades_maximos_minimos(heroe_mas_alto(lista), heroe_mas_bajo(lista))}')
+    print(f'El promedio de altura de TODOS los heroes es: {promedio_altura_de_heroes(lista):.2f}')
+    print(f'El heroe MAS y MENOS pesados son: {heroe_mas_menos_pesados(lista)}')
+    
+
+ordenar_informacion(lista_personajes)
+
+# print(imprimir_nombres_de_superheroes(lista_personajes))
+# print(imprimir_altura_de_superheroes(lista_personajes))
+# print(heroe_mas_alto(lista_personajes))
+# print(heroe_mas_bajo(lista_personajes))
+# print(promedio_altura_de_heroes(lista_personajes))
+# print(identidades_maximos_minimos(heroe_mas_alto(lista_personajes), heroe_mas_bajo(lista_personajes)))
+# print(heroe_mas_menos_pesados(lista_personajes))
