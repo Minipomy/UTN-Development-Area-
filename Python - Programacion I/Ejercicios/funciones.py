@@ -210,12 +210,15 @@ Crear una función que recibe una lista de diccionarios con información de pel�
 devuelve un diccionario con la cantidad de películas por género.
 '''
 
-# def cantidad_peliculas_por_genero(lista:list[dict]) -> dict:
-    # diccionario = {}
-    # for elemento in lista: 
-    #     elemento['genero'])
-    #     print()
-    #     # print(elemento)
+def cantidad_peliculas_por_genero(lista:list[dict]) -> dict:
+    diccionario_vacio = {}
+    for peliculas in lista:
+        genero = peliculas.get("genero", "ERROR")
+        if not genero in diccionario_vacio.keys():
+            diccionario_vacio[genero] = 1
+        else:
+            diccionario_vacio[genero] += 1
+    return diccionario_vacio
 
 # ---------------------------EJ1------------------------------
 print("La conversion final es: "f'{convertir_celsius_a_fahrenheit(35.3):.2f}')
@@ -246,7 +249,7 @@ print("La transformacion de la lista de palabras a dict: ", f'{lista_palabras_a_
 #---------------------------EJ14------------------------------
 print("La transformacion de la lista de numeros a dict: ", f'{lista_numeros_a_dict(lista_edades)}')
 # #---------------------------EJ15------------------------------
-# print("La cantidad de peliculas por genero es: ", f'{cantidad_peliculas_por_genero(lista_peliculas)}')
+print("La cantidad de peliculas por genero es: ", f'{cantidad_peliculas_por_genero(lista_peliculas)}')
 
 
 

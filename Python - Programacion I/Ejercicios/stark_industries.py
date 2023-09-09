@@ -362,7 +362,7 @@ def identidades_maximos_minimos(lista:list) -> str:
                 identidad_menor = heroe.get('identidad', 'No se encontro')
         elif(heroe.get('nombre') == heroe_mas_alto(lista)):
                 identidad_mayor = heroe.get('identidad', 'No se encontro')
-
+    #   Falta completar#   Falta completar#   Falta completar#   Falta completar
 
 imprimir_nombres_de_superheroes(lista_personajes)
 imprimir_altura_de_superheroes(lista_personajes)

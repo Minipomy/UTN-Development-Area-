@@ -8,6 +8,7 @@ Buenas! Este repositorio es exclusivamente para la Facultad UTN Avellaneda, prin
 >  **Nota:** Actualmente se actualiza por semana dado que esta en curso
 
 - Desafio Stark Industries
+
 https://docs.google.com/document/d/13c882sQnZBH1D5DdploK4mFeJGfmoaygaG-oeo_TNIU/edit
 
 ```mermaid
