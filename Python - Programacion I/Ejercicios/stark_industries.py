@@ -305,33 +305,59 @@ Construir un menú que permita elegir qué dato obtener
 
 
 def imprimir_nombres_de_superheroes(lista:list) -> list:
+    lista_nombres_heroes = []
     for heroe in lista:
-        nombre = heroe.get('nombre', "No se encontro")
-        print(nombre)
+        lista_nombres_heroes.append(heroe.get('nombre', "No se encontro"))
+    return(lista_nombres_heroes)
 
 def imprimir_altura_de_superheroes(lista:list) -> list:
+    lista_heroes_altura = []
     for heroe in lista:
-        nombre = heroe.get('nombre', "No se encontro")
-        altura = heroe.get('altura', "No se encontro")
-        print(nombre, altura)
+        lista_heroes_altura.append(heroe.get('nombre', "No se encontro"))
+        lista_heroes_altura.append(float(heroe.get('altura', "No se encontro")))
+    return(lista_heroes_altura)
 
-
-print(imprimir_altura_de_superheroes(lista_personajes))
-
+# def heroe_mas_alto(lista:list) -> str:
+#     flag = True
+#     heroe_mas_alto = 0
+#     altura_mayor = 0
+#     for heroe in lista:
+#         if(flag == True):
+#             heroe_mas_alto = heroe.get('nombre', "No se encontro")
+#             altura_mayor = float(heroe.get('altura', "No se encontro"))
+#             flag = False
+#         elif(altura_mayor >= float(heroe.get('altura', "No se encontro"))):
+#             heroe_mas_alto = heroe.get('nombre', "No se encontro")
+#             altura_mayor = float(heroe.get('altura', "No se encontro"))
+#     return(heroe_mas_alto, altura_mayor)
 
 def heroe_mas_alto(lista:list) -> str:
     flag = True
-    heroe_mas_alto = ""
-    altura_mayor = ""
+    heroe_mas_alto = 0
+    altura_mayor = 0
     for heroe in lista:
         if(flag == True):
             heroe_mas_alto = heroe.get('nombre', "No se encontro")
-            altura_mayor = heroe.get('altura', "No se encontro")
+            altura_mayor = float(heroe.get('altura', "No se encontro"))
             flag = False
-        elif(altura_mayor >= heroe.get('altura', "No se encontro")):
+        elif(altura_mayor >= float(heroe.get('altura', "No se encontro"))):
             heroe_mas_alto = heroe.get('nombre', "No se encontro")
-            altura_mayor = heroe.get('altura', "No se encontro")
+            altura_mayor = float(heroe.get('altura', "No se encontro"))
     return(heroe_mas_alto)
+
+# def heroe_mas_bajo(lista:list) -> str:
+#     flag = True
+#     heroe_mas_bajo = ""
+#     altura_menor = ""
+#     for heroe in lista:
+#         if(flag == True):
+#             heroe_mas_bajo = heroe.get('nombre', "No se encontro")
+#             altura_menor = heroe.get('altura', "No se encontro")
+#             flag = False
+#         elif(altura_menor <= heroe.get('altura', "No se encontro")):
+#             heroe_mas_bajo = heroe.get('nombre', "No se encontro")
+#             altura_menor = heroe.get('altura', "No se encontro")
+#     return(heroe_mas_bajo, altura_menor)
 
 def heroe_mas_bajo(lista:list) -> str:
     flag = True
@@ -340,11 +366,11 @@ def heroe_mas_bajo(lista:list) -> str:
     for heroe in lista:
         if(flag == True):
             heroe_mas_bajo = heroe.get('nombre', "No se encontro")
-            altura_menor = heroe.get('altura', "No se encontro")
+            altura_menor = float(heroe.get('altura', "No se encontro"))
             flag = False
-        elif(altura_menor <= heroe.get('altura', "No se encontro")):
+        elif(altura_menor <= float(heroe.get('altura', "No se encontro"))):
             heroe_mas_bajo = heroe.get('nombre', "No se encontro")
-            altura_menor = heroe.get('altura', "No se encontro")
+            altura_menor = float(heroe.get('altura', "No se encontro"))
     return(heroe_mas_bajo)
 
 def promedio_altura_de_heroes(lista:list) -> str:
@@ -356,17 +382,40 @@ def promedio_altura_de_heroes(lista:list) -> str:
     promedio = acumulador_altura / contador_altura
     return(promedio)
 
-def identidades_maximos_minimos(lista:list) -> str:
-    for heroe in lista:
-        if(heroe.get('nombre') == heroe_mas_bajo(lista)):
-                identidad_menor = heroe.get('identidad', 'No se encontro')
-        elif(heroe.get('nombre') == heroe_mas_alto(lista)):
-                identidad_mayor = heroe.get('identidad', 'No se encontro')
-    #   Falta completar#   Falta completar#   Falta completar#   Falta completar
+def identidades_maximos_minimos(maximo:max, minimo:min) -> str:
+    identidad_mayor = 0
+    identidad_menor = 0
+    for heroe in lista_personajes:
+        if(heroe.get('nombre', 'ERROR') == maximo):
+            identidad_mayor = heroe.get('identidad', 'ERROR')
+        elif(heroe.get('nombre', 'ERROR') == minimo):
+            identidad_menor = heroe.get('identidad', 'ERROR')
+    return(identidad_mayor, identidad_menor)
 
-imprimir_nombres_de_superheroes(lista_personajes)
-imprimir_altura_de_superheroes(lista_personajes)
-heroe_mas_alto(lista_personajes)
-heroe_mas_bajo(lista_personajes)
-promedio_altura_de_heroes(lista_personajes)
-identidades_maximos_minimos(lista_personajes)
+def heroe_mas_menos_pesados(lista:list) -> list:
+    flag = True
+    lista_heroe = []
+    for heroe in lista:
+        if(flag == True):
+          lista_heroe.append(heroe.get('nombre', 'ERROR'))
+          lista_heroe.append(float(heroe.get('peso', 'ERROR')))
+          lista_heroe.append(heroe.get('nombre', 'ERROR'))
+          lista_heroe.append(float(heroe.get('peso', 'ERROR')))
+          flag = False
+        #   Indices 0;1 - corresponden al heroe menos pesado
+        elif(lista_heroe[1] <= float(heroe.get('peso', 'ERROR'))):
+            lista_heroe[0] = heroe.get('nombre', 'ERROR')
+            lista_heroe[1] = float(heroe.get('peso', 'ERROR'))
+        #   Indices 2;3 - corresponden al heroe mas pesado
+        elif(lista_heroe[3] >= float(heroe.get('peso', 'ERROR'))):
+            lista_heroe[2] = heroe.get('nombre', 'ERROR')
+            lista_heroe[3] = float(heroe.get('peso', 'ERROR'))
+    return(lista_heroe)
+
+print(imprimir_nombres_de_superheroes(lista_personajes))
+print(imprimir_altura_de_superheroes(lista_personajes))
+print(heroe_mas_alto(lista_personajes))
+print(heroe_mas_bajo(lista_personajes))
+print(promedio_altura_de_heroes(lista_personajes))
+print(identidades_maximos_minimos(heroe_mas_alto(lista_personajes), heroe_mas_bajo(lista_personajes)))
+print(heroe_mas_menos_pesados(lista_personajes))
