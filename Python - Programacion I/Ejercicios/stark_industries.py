@@ -331,7 +331,7 @@ def imprimir_altura_de_superheroes(lista:list) -> list:
 #             altura_mayor = float(heroe.get('altura', "No se encontro"))
 #     return(heroe_mas_alto, altura_mayor)
 
-def heroe_mas_alto(lista:list) -> str:
+def heroe_mas_alto(lista:list) -> float:
     flag = True
     heroe_mas_alto = 0
     altura_mayor = 0
@@ -359,7 +359,7 @@ def heroe_mas_alto(lista:list) -> str:
 #             altura_menor = heroe.get('altura', "No se encontro")
 #     return(heroe_mas_bajo, altura_menor)
 
-def heroe_mas_bajo(lista:list) -> str:
+def heroe_mas_bajo(lista:list) -> float:
     flag = True
     heroe_mas_bajo = ""
     altura_menor = ""
@@ -373,7 +373,7 @@ def heroe_mas_bajo(lista:list) -> str:
             altura_menor = float(heroe.get('altura', "No se encontro"))
     return(heroe_mas_bajo)
 
-def promedio_altura_de_heroes(lista:list) -> str:
+def promedio_altura_de_heroes(lista:list) -> float:
     acumulador_altura = 0
     contador_altura = 0
     for heroe in lista:
@@ -415,16 +415,13 @@ def heroe_mas_menos_pesados(lista:list) -> list:
 def ordenar_informacion(lista):
     for heroe in imprimir_nombres_de_superheroes(lista):
         print(f"Esta el heroe: {heroe}")
-
     for altura in imprimir_altura_de_superheroes(lista):
         print(f"Las alturas son: {altura}")
-    
     print(f"El heroe mas alto es: {heroe_mas_alto(lista)}")
     print(f"El heroe mas bajo es: {heroe_mas_bajo(lista)}")
     print(f'Las identidades de los heroes ALTOS y BAJOS son: {identidades_maximos_minimos(heroe_mas_alto(lista), heroe_mas_bajo(lista))}')
     print(f'El promedio de altura de TODOS los heroes es: {promedio_altura_de_heroes(lista):.2f}')
     print(f'El heroe MAS y MENOS pesados son: {heroe_mas_menos_pesados(lista)}')
-    
 
 ordenar_informacion(lista_personajes)
 
