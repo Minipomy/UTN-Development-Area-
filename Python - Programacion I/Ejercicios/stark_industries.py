@@ -423,7 +423,7 @@ def ordenar_informacion(lista):
     print(f'El promedio de altura de TODOS los heroes es: {promedio_altura_de_heroes(lista):.2f}')
     print(f'El heroe MAS y MENOS pesados son: {heroe_mas_menos_pesados(lista)}')
 
-def menu_avengers(lista:list):
+def menu_avengers(lista:list) -> None:
     flag = True
     while(flag == True):
       opcion_ingresada = input('Por favor, elegir una opcion:\n1.-Imprimir nombres de heroes\n2.-Imprimir alturas de los heroes\n3.-Altura de heroe mas bajo\n4.-Altura de heroe mas alto\n5.-Promedio de altura de TODOS\n6.-Identidades de MAXIMOS y MINIMOS\n7.-Heroes MAS y MENOS pesados\n8.-Cancelar\n')
@@ -446,6 +446,7 @@ def menu_avengers(lista:list):
           print(f'El heroe MAS y MENOS pesados son: {heroe_mas_menos_pesados(lista)}')
         case 8:
             flag = False
+
 menu_avengers(lista_personajes)
 
 # print(imprimir_nombres_de_superheroes(lista_personajes))

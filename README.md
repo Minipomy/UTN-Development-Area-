@@ -13,6 +13,10 @@ https://docs.google.com/document/d/13c882sQnZBH1D5DdploK4mFeJGfmoaygaG-oeo_TNIU/
 
 ```mermaid
 graph LR
+Python[Python Language] --> Operadores(Operadores)
+Python[Python Language] --> Condicionales(Condicionales)
+Python[Python Language] --> Validaciones(Validaciones)
+Python[Python Language] --> Repeticiones(Repeticiones)
 Python[Python Language] --> Diccionarios(Diccionarios)
 Python[Python Language] --> Funciones(Funciones)
 ```
