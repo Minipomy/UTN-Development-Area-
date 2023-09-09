@@ -315,6 +315,10 @@ def imprimir_altura_de_superheroes(lista:list) -> list:
         altura = heroe.get('altura', "No se encontro")
         print(nombre, altura)
 
+
+print(imprimir_altura_de_superheroes(lista_personajes))
+
+
 def heroe_mas_alto(lista:list) -> str:
     flag = True
     heroe_mas_alto = ""
@@ -327,7 +331,6 @@ def heroe_mas_alto(lista:list) -> str:
         elif(altura_mayor >= heroe.get('altura', "No se encontro")):
             heroe_mas_alto = heroe.get('nombre', "No se encontro")
             altura_mayor = heroe.get('altura', "No se encontro")
-    print("El heroe mas alto es: ",heroe_mas_alto, altura_mayor)
     return(heroe_mas_alto)
 
 def heroe_mas_bajo(lista:list) -> str:
@@ -342,7 +345,6 @@ def heroe_mas_bajo(lista:list) -> str:
         elif(altura_menor <= heroe.get('altura', "No se encontro")):
             heroe_mas_bajo = heroe.get('nombre', "No se encontro")
             altura_menor = heroe.get('altura', "No se encontro")
-    print("El heroe mas bajo es: ",heroe_mas_bajo, altura_menor)
     return(heroe_mas_bajo)
 
 def promedio_altura_de_heroes(lista:list) -> str:
@@ -352,7 +354,6 @@ def promedio_altura_de_heroes(lista:list) -> str:
         acumulador_altura += float(heroe.get('altura', 0))
         contador_altura += 1
     promedio = acumulador_altura / contador_altura
-    print("El promedio de la altura de los heroes es: ",f'{promedio:.2f}')
     return(promedio)
 
 def identidades_maximos_minimos(lista:list) -> str:
@@ -361,7 +362,6 @@ def identidades_maximos_minimos(lista:list) -> str:
                 identidad_menor = heroe.get('identidad', 'No se encontro')
         elif(heroe.get('nombre') == heroe_mas_alto(lista)):
                 identidad_mayor = heroe.get('identidad', 'No se encontro')
-    print("identidadMA ", identidad_mayor, "identidadME " ,identidad_menor)
 
 
 imprimir_nombres_de_superheroes(lista_personajes)
@@ -370,37 +370,3 @@ heroe_mas_alto(lista_personajes)
 heroe_mas_bajo(lista_personajes)
 promedio_altura_de_heroes(lista_personajes)
 identidades_maximos_minimos(lista_personajes)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-persona = 'Maxi'
-
-
-
-def imprimir_hola_mundo():
-    return(print("Hola mundo"))
-
-def imprimir_hola_mundo_persona(persona:str) -> str:
-    return(print(f"Hola mundo {persona}"))
-
-
-
-imprimir_hola_mundo()
-imprimir_hola_mundo()
-
-
-imprimir_hola_mundo_persona('Juan')
-
