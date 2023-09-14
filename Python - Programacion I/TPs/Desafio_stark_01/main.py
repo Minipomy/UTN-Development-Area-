@@ -32,19 +32,19 @@ print(f'The female characters are: {print_only_female(lista_heroes)}')
 
 #   C.-Recorrer la lista y determinar cuál es el superhéroe más alto de género M
 
-print(f'The tallest male hero is: {obtain_tallest_male_hero(lista_heroes)}')
+print(f'The tallest male height hero is: {obtain_tallest_male_hero(lista_heroes)}')
 
 #   D.-Recorrer la lista y determinar cuál es el superhéroe más alto de género F 
 
-print(f'The tallest female hero is: {obtain_tallest_female_hero(lista_heroes)}')
+print(f'The tallest female height hero is: {obtain_tallest_female_hero(lista_heroes)}')
 
 #   E.-Recorrer la lista y determinar cuál es el superhéroe más bajo de género M 
 
-print(f'The lowest height male hero is: {obtain_lowest_male_hero(lista_heroes)}')
+print(f'The lowest male height hero is: {obtain_lowest_male_hero(lista_heroes)}')
 
 #   F.-Recorrer la lista y determinar cuál es el superhéroe más bajo de género F 
 
-print(f'The lowest height female hero is: {obtain_lowest_female_hero(lista_heroes)}')
+print(f'The lowest female height hero is: {obtain_lowest_female_hero(lista_heroes)}')
 
 #   G.-Recorrer la lista y determinar la altura promedio de los  superhéroes de género M
 
