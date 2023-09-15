@@ -38,11 +38,11 @@ def get_tallest_female_hero(list_hero:list) -> str | None :
     for hero in list_hero:
         gender = hero.get('genero')
         if(flag == True and gender == 'F'):
-            hero_name = hero.get('nombre', 'ERROR')
+            hero_name = hero.get('nombre', 'ERROR').capitalize()
             hero_height = float(hero.get('altura', 'ERROR'))
             flag = False
         elif(gender == 'F' and hero_height <= float(hero.get('altura', 'ERROR'))):
-            hero_name = hero.get('nombre', 'ERROR')
+            hero_name = hero.get('nombre', 'ERROR').capitalize()
             hero_height = float(hero.get('altura', 'ERROR'))
     return(hero_name, hero_height)
 
@@ -106,7 +106,7 @@ def average_height_of_female_heroes(list_hero:list) -> int | None :
 def get_quantity_heroes_by_eye_color(list_heroes:list) -> dict:
     eyes_colors = {}
     for hero in list_heroes:
-        color_actual = hero.get('color_ojos')
+        color_actual = hero.get('color_ojos').capitalize()
 
         if(color_actual in eyes_colors.keys()):
             eyes_colors[color_actual] += 1
@@ -117,7 +117,7 @@ def get_quantity_heroes_by_eye_color(list_heroes:list) -> dict:
 def get_quantity_heroes_by_hair_color(list_heroes:list) -> dict:
     hair_colors = {}
     for hero in list_heroes:
-        color_actual = hero.get('color_pelo')
+        color_actual = hero.get('color_pelo').capitalize()
 
         if(color_actual in hair_colors.keys()):
             hair_colors[color_actual] += 1
@@ -128,7 +128,7 @@ def get_quantity_heroes_by_hair_color(list_heroes:list) -> dict:
 def get_quantity_heroes_by_intellect(list_heroes:list) -> dict:
     intellect_counts = {}
     for hero in list_heroes:
-        actual_intel = hero.get('inteligencia')
+        actual_intel = hero.get('inteligencia').capitalize()
 
         if(actual_intel in intellect_counts.keys()):
             match(actual_intel):
@@ -147,7 +147,7 @@ def get_quantity_heroes_by_intellect(list_heroes:list) -> dict:
 def group_by_eye_color(list_heroes:list) -> str:
     colors_category = {}
     for hero in list_heroes:
-        actual_color = hero.get('color_ojos')
+        actual_color = hero.get('color_ojos').capitalize()
         actual_name = hero.get('nombre')
         if(actual_color in colors_category.keys()):
             colors_category[actual_color] += [actual_name]
@@ -158,18 +158,26 @@ def group_by_eye_color(list_heroes:list) -> str:
 def group_by_hair_color(list_heroes:list) -> str:
     colors_category = {}
     for hero in list_heroes:
-        actual_color = hero.get('color_pelo')
+        actual_color = hero.get('color_pelo').capitalize()
         actual_name = hero.get('nombre')
         if(actual_color in colors_category.keys()):
-            colors_category[actual_color] += [actual_name]
+            match(actual_color):
+                case "":
+                    colors_category['No tiene'] += [actual_name] 
+                case _:
+                    colors_category[actual_color] += [actual_name] 
         else:
-            colors_category[actual_color] = [actual_name]
+            match(actual_color):
+                case "":
+                    colors_category['No tiene'] = [actual_name]
+                case _:
+                    colors_category[actual_color] = [actual_name] 
     return(colors_category)
 
 def group_by_intellect(list_heroes:list) -> dict[list]:
     intel_category = {}
     for hero in list_heroes:
-        actual_intel = hero.get('inteligencia')
+        actual_intel = hero.get('inteligencia').capitalize()
         actual_name = hero.get('nombre')
         if(actual_intel in intel_category.keys()):
             match(actual_intel):
@@ -189,6 +197,4 @@ def order_by_key(dictionary:dict[list]):
     for category in dictionary:
         print(
             f'''----Category {category}----\n
-            {dictionary[category]}
-            '''
-        )
+            {dictionary[category]}\n''')

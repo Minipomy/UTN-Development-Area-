@@ -3,7 +3,7 @@ from fun_stark import *
 def __ui_app__(input:input) -> str | dict | list | int :
     flag = True
     while(flag == True):
-        desire_option = input('''Please, select you desire option: (HAS TO BE A NUMERIC VALUE)\n
+        desire_option = input('''Please, select your desire option: (HAS TO BE A NUMERIC VALUE)\n
                                 1.- Imprimir por consola el nombre de cada superhéroe de género M
                                 2.- Imprimir por consola el nombre de cada superhéroe de género F
                                 3.- Determina cuál es el superhéroe más alto de género M 
@@ -20,7 +20,7 @@ def __ui_app__(input:input) -> str | dict | list | int :
                                 14.-Listar todos los superhéroes agrupados por tipo de inteligencia
                                 15.-Finalizar\n''')
         while(not desire_option.isdigit()):
-            desire_option = input('''Please, select you desire option: (HAS TO BE A NUMERIC VALUE)\n
+            desire_option = input('''Please, select your desire option: (HAS TO BE A NUMERIC VALUE)\n
                                 1.- Imprimir por consola el nombre de cada superhéroe de género M
                                 2.- Imprimir por consola el nombre de cada superhéroe de género F
                                 3.- Determina cuál es el superhéroe más alto de género M 
