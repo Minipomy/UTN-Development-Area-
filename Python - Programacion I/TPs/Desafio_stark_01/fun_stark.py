@@ -21,11 +21,12 @@ def get_tallest_male_hero(list_hero:list) -> str | None:
     hero_height = None
     flag = True
     for hero in list_hero:
-        if(flag == True and print_only_male(list_hero)):
+        gender = hero.get('genero')
+        if(flag == True and gender == 'M'):
             hero_name = hero.get('nombre', 'ERROR')
             hero_height = float(hero.get('altura', 'ERROR'))
             flag = False
-        elif(print_only_male(list_hero) and hero_height <= float(hero.get('altura', 'ERROR'))):
+        elif(gender == 'M' and hero_height <= float(hero.get('altura', 'ERROR'))):
             hero_name = hero.get('nombre', 'ERROR')
             hero_height = float(hero.get('altura', 'ERROR'))
     return(hero_name, hero_height)
@@ -35,11 +36,12 @@ def get_tallest_female_hero(list_hero:list) -> str | None :
     hero_height = None
     flag = True
     for hero in list_hero:
-        if(flag == True and print_only_female(list_hero)):
+        gender = hero.get('genero')
+        if(flag == True and gender == 'F'):
             hero_name = hero.get('nombre', 'ERROR')
             hero_height = float(hero.get('altura', 'ERROR'))
             flag = False
-        elif(print_only_female(list_hero) and hero_height <= float(hero.get('altura', 'ERROR'))):
+        elif(gender == 'F' and hero_height <= float(hero.get('altura', 'ERROR'))):
             hero_name = hero.get('nombre', 'ERROR')
             hero_height = float(hero.get('altura', 'ERROR'))
     return(hero_name, hero_height)
@@ -49,11 +51,12 @@ def get_lowest_male_hero(list_hero:list) -> str | None:
     hero_height = None
     flag = True
     for hero in list_hero:
-        if(flag == True and print_only_male(list_hero)):
+        gender = hero.get('genero')
+        if(flag == True and gender == 'M'):
             hero_name = hero.get('nombre', 'ERROR')
             hero_height = float(hero.get('altura', 'ERROR'))
             flag = False
-        elif(print_only_male(list_hero) and hero_height >= float(hero.get('altura', 'ERROR'))):
+        elif(gender == 'M' and hero_height >= float(hero.get('altura', 'ERROR'))):
             hero_name = hero.get('nombre', 'ERROR')
             hero_height = float(hero.get('altura', 'ERROR'))
     return(hero_name, hero_height)
@@ -63,11 +66,12 @@ def get_lowest_female_hero(list_hero:list) -> str | None :
     hero_height = None
     flag = True
     for hero in list_hero:
-        if(flag == True and print_only_female(list_hero)):
+        gender = hero.get('genero')
+        if(flag == True and gender == 'F'):
             hero_name = hero.get('nombre', 'ERROR')
             hero_height = float(hero.get('altura', 'ERROR'))
             flag = False
-        elif(print_only_female(list_hero) and hero_height >= float(hero.get('altura', 'ERROR'))):
+        elif(gender == 'F' and hero_height >= float(hero.get('altura', 'ERROR'))):
             hero_name = hero.get('nombre', 'ERROR')
             hero_height = float(hero.get('altura', 'ERROR'))
     return(hero_name, hero_height)
@@ -77,7 +81,8 @@ def average_height_of_male_heroes(list_hero:list) -> int | None:
     accumulator = 0
     average_male = None
     for hero in list_hero:
-        if(print_only_male(list_hero)):
+        gender = hero.get('genero')
+        if(gender == 'M'):
             accumulator += float(hero.get('altura', 'ERROR'))
             counter += 1
     if(counter != 0):
@@ -89,7 +94,8 @@ def average_height_of_female_heroes(list_hero:list) -> int | None :
     accumulator = 0
     average_female = None
     for hero in list_hero:
-        if(print_only_female(list_hero)):
+        gender = hero.get('genero')
+        if(gender == 'F'):
             accumulator += float(hero.get('altura', 'ERROR'))
             counter += 1
             
@@ -160,7 +166,7 @@ def group_by_hair_color(list_heroes:list) -> str:
             colors_category[actual_color] = [actual_name]
     return(colors_category)
 
-def group_by_intellect(list_heroes:list) -> str:
+def group_by_intellect(list_heroes:list) -> dict[list]:
     intel_category = {}
     for hero in list_heroes:
         actual_intel = hero.get('inteligencia')
@@ -178,3 +184,11 @@ def group_by_intellect(list_heroes:list) -> str:
                 case _:
                     intel_category[actual_intel] = [actual_name] 
     return(intel_category)
+
+def order_by_key(dictionary:dict[list]):
+    for category in dictionary:
+        print(
+            f'''----Category {category}----\n
+            {dictionary[category]}
+            '''
+        )
