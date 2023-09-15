@@ -14,9 +14,9 @@ def print_only_female(list_hero:list) -> list:
         if(hero.get('genero') == 'F'):
             list_womens.append(hero.get('nombre'))
     return(list_womens)
- 
 
-def obtain_tallest_male_hero(list_hero:list) -> str | None:
+
+def get_tallest_male_hero(list_hero:list) -> str | None:
     hero_name = None
     hero_height = None
     flag = True
@@ -30,7 +30,7 @@ def obtain_tallest_male_hero(list_hero:list) -> str | None:
             hero_height = float(hero.get('altura', 'ERROR'))
     return(hero_name, hero_height)
 
-def obtain_tallest_female_hero(list_hero:list) -> str | None :
+def get_tallest_female_hero(list_hero:list) -> str | None :
     hero_name = None
     hero_height = None
     flag = True
@@ -44,7 +44,7 @@ def obtain_tallest_female_hero(list_hero:list) -> str | None :
             hero_height = float(hero.get('altura', 'ERROR'))
     return(hero_name, hero_height)
 
-def obtain_lowest_male_hero(list_hero:list) -> str | None:
+def get_lowest_male_hero(list_hero:list) -> str | None:
     hero_name = None
     hero_height = None
     flag = True
@@ -58,7 +58,7 @@ def obtain_lowest_male_hero(list_hero:list) -> str | None:
             hero_height = float(hero.get('altura', 'ERROR'))
     return(hero_name, hero_height)
 
-def obtain_lowest_female_hero(list_hero:list) -> str | None :
+def get_lowest_female_hero(list_hero:list) -> str | None :
     hero_name = None
     hero_height = None
     flag = True
@@ -96,3 +96,47 @@ def average_height_of_female_heroes(list_hero:list) -> int | None :
     if(counter != 0):
         average_female = float(accumulator / counter)
     return(average_female)
+
+def get_quantity_heroes_by_eye_color(list_heroes:list) -> dict:
+    eyes_colors = {}
+    for hero in list_heroes:
+        color_actual = hero.get('color_ojos')
+
+        if(color_actual in eyes_colors.keys()):
+            eyes_colors[color_actual] += 1
+        else:
+            eyes_colors[color_actual] = 1 
+    return(eyes_colors)
+
+def get_quantity_heroes_by_hair_color(list_heroes:list) -> dict:
+    hair_colors = {}
+    for hero in list_heroes:
+        color_actual = hero.get('color_pelo')
+
+        if(color_actual in hair_colors.keys()):
+            hair_colors[color_actual] += 1
+        else:
+            hair_colors[color_actual] = 1 
+    return(hair_colors)
+
+def get_quantity_heroes_by_intellect(list_heroes:list) -> dict:
+    intellect_counts = {}
+    for hero in list_heroes:
+        actual_intel = hero.get('inteligencia')
+
+        if(actual_intel in intellect_counts.keys()):
+            match(actual_intel):
+                case "":
+                    intellect_counts['No tiene'] += 1
+                case _:
+                    intellect_counts[actual_intel] += 1 
+        else:
+            match(actual_intel):
+                case "":
+                    intellect_counts['No tiene'] = 1
+                case _:
+                    intellect_counts[actual_intel] = 1 
+    return(intellect_counts)
+
+
+print(get_quantity_heroes_by_intellect(lista_heroes))
