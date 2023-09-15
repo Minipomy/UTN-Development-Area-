@@ -67,3 +67,17 @@ print(f'Color eyes count is: {get_quantity_heroes_by_eye_color(lista_heroes)}')
 print(f'Color hair count is: {get_quantity_heroes_by_hair_color(lista_heroes)}')
 
 #   L.-Determinar cuántos superhéroes tienen cada tipo de inteligencia (En caso de no tener, Inicializarlo con ‘No Tiene’). 
+
+print(f'Intellect count is: {get_quantity_heroes_by_intellect(lista_heroes)}')
+
+#   M.-Listar todos los superhéroes agrupados por color de ojos.
+
+print(f'{group_by_eye_color(lista_heroes)}')
+
+#   N.-Listar todos los superhéroes agrupados por color de pelo.
+
+print(f'{group_by_hair_color(lista_heroes)}')
+
+#   O.-Listar todos los superhéroes agrupados por tipo de inteligencia
+
+print(f'{group_by_intellect(lista_heroes)}')

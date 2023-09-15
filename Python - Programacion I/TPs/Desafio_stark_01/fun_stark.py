@@ -138,5 +138,43 @@ def get_quantity_heroes_by_intellect(list_heroes:list) -> dict:
                     intellect_counts[actual_intel] = 1 
     return(intellect_counts)
 
+def group_by_eye_color(list_heroes:list) -> str:
+    colors_category = {}
+    for hero in list_heroes:
+        actual_color = hero.get('color_ojos')
+        actual_name = hero.get('nombre')
+        if(actual_color in colors_category.keys()):
+            colors_category[actual_color] += [actual_name]
+        else:
+            colors_category[actual_color] = [actual_name]
+    return(colors_category)
 
-print(get_quantity_heroes_by_intellect(lista_heroes))
+def group_by_hair_color(list_heroes:list) -> str:
+    colors_category = {}
+    for hero in list_heroes:
+        actual_color = hero.get('color_pelo')
+        actual_name = hero.get('nombre')
+        if(actual_color in colors_category.keys()):
+            colors_category[actual_color] += [actual_name]
+        else:
+            colors_category[actual_color] = [actual_name]
+    return(colors_category)
+
+def group_by_intellect(list_heroes:list) -> str:
+    intel_category = {}
+    for hero in list_heroes:
+        actual_intel = hero.get('inteligencia')
+        actual_name = hero.get('nombre')
+        if(actual_intel in intel_category.keys()):
+            match(actual_intel):
+                case "":
+                    intel_category['No tiene'] += [actual_name] 
+                case _:
+                    intel_category[actual_intel] += [actual_name] 
+        else:
+            match(actual_intel):
+                case "":
+                    intel_category['No tiene'] = [actual_name] 
+                case _:
+                    intel_category[actual_intel] = [actual_name] 
+    return(intel_category)
