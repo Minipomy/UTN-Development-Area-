@@ -307,13 +307,61 @@ def stark_imprimir_nombres_heroes(list_hero:list) -> dict:
         return(-1)
     imprimir_dato(obtener_nombre(list_hero))
 
-print(stark_imprimir_nombres_heroes(stark_normalizar_datos(lista_heroes)))
-
 def obtener_nombre_y_dato(dict_hero:dict, key:str) -> str:
-    return(f'{dict_hero["nombre"]} | {key}: {dict_hero[key]}')
+    return(f'Nombre: {dict_hero.get("nombre")} | {key}: {dict_hero.get(key)}')
+
 
 def stark_imprimir_nombres_alturas(list_hero:list) -> str:
+    if(len(list_hero) < 0):
+            return(-1)
     for hero in list_hero:
         imprimir_dato(obtener_nombre_y_dato(hero, 'altura'))
 
-stark_imprimir_nombres_alturas(stark_normalizar_datos(lista_heroes))
+def calcular_max(list_hero:list, key:str) -> str:
+    flag = True
+    max_valor = 0
+    max_hero = 0
+    for hero in list_hero:
+        for clave in hero:
+            if(flag == True and clave == key):
+                max_valor = hero.get(key)
+                max_hero = hero.get('nombre')
+                flag = False
+            elif(clave == key and max_valor <= hero.get(key)):
+                max_valor = hero.get(key)
+                max_hero = hero.get('nombre')
+    return(max_hero)
+
+def calcular_min(list_hero:list, key:str) -> str:
+    flag = True
+    min_valor = 0
+    min_hero = 0
+    for hero in list_hero:
+        for clave in hero:
+            if(flag == True and clave == key):
+                min_valor = hero.get(key)
+                min_hero = hero.get('nombre')
+                flag = False
+            elif(clave == key and min_valor >= hero.get(key)):
+                min_valor = hero.get(key)
+                min_hero = hero.get('nombre')
+    return(min_hero)
+
+def calcular_max_min_dato(list_hero:list, max_min:str, key:str):
+    match(max_min.capitalize()):
+        case 'Maximo':
+            return(calcular_max(list_hero, key))
+        case 'Minimo':
+            return(calcular_min(list_hero, key))
+    
+def stark_calcular_imprimir_heroe(list_hero:list, max_min:str, key:str):
+    if(len(list_hero) < 0):
+        return(-1)
+    match(max_min.capitalize()):
+        case 'Maximo':
+            imprimir_dato(f'Mayor {key}: {obtener_nombre_y_dato({"nombre" : calcular_max_min_dato(list_hero, "Maximo", key)}, key)}')
+        case 'Minimo':
+            imprimir_dato(f'Menor {key}: {obtener_nombre_y_dato({"nombre" : calcular_max_min_dato(list_hero, "Minimo", key)}, key)}')
+
+print(stark_calcular_imprimir_heroe(lista_heroes, 'maximo', 'fuerza'))
+print(lista_heroes[0].get('fuerza'))
