@@ -274,7 +274,15 @@ def order_by_key(dictionary:dict[list]):
             {dictionary[category]}\n''')
 
 
-#   ------------------------------------- 02 -------------------------------------
+#   ------------------------------------- 02 FORMATEO STRINGS -------------------------------------
+
+def obtener_nombre(list_hero:list):
+    for hero in list_hero:
+        print(f'Nombre: {hero.get("nombre")}')
+
+def imprimir_dato(dato:str) -> str:
+    print(dato)
+
 def stark_normalizar_datos(list_hero:list):
     if(len(list_hero) > 0):
             for hero in list_hero:
@@ -292,17 +300,20 @@ def stark_normalizar_datos(list_hero:list):
         print('No hay nada para normalizar')
     return(list_hero)
 
+#   ------------------------------------- 02 funciones -------------------------------------
 
-def obtener_nombre(list_hero:list):
+def stark_imprimir_nombres_heroes(list_hero:list) -> dict:
+    if(len(list_hero) < 0):
+        return(-1)
+    imprimir_dato(obtener_nombre(list_hero))
+
+print(stark_imprimir_nombres_heroes(stark_normalizar_datos(lista_heroes)))
+
+def obtener_nombre_y_dato(dict_hero:dict, key:str) -> str:
+    return(f'{dict_hero["nombre"]} | {key}: {dict_hero[key]}')
+
+def stark_imprimir_nombres_alturas(list_hero:list) -> str:
     for hero in list_hero:
-        for nombre in hero.items():
-            print(hero(nombre))
-    
+        imprimir_dato(obtener_nombre_y_dato(hero, 'altura'))
 
-
-print(obtener_nombre(stark_normalizar_datos(lista_heroes)))
-
-
-for hero in lista_heroes:
-    for nombre in hero:
-        lista_heroes(nombre)
+stark_imprimir_nombres_alturas(stark_normalizar_datos(lista_heroes))
