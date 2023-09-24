@@ -1,4 +1,5 @@
-from app import __ui_app__
+from data_stark import *
+from fun_stark import *
+from app import stark_marvel_app
 
-__ui_app__(input)
-
+stark_marvel_app(lista_heroes)

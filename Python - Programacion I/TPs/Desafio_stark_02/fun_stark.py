@@ -1,6 +1,3 @@
-from data_stark import lista_heroes
-
-
 def print_only_male(list_hero:list) -> list:
     '''
     Uso: crea una lista vacia de heroes masculinos
@@ -276,9 +273,8 @@ def order_by_key(dictionary:dict[list]):
 
 #   ------------------------------------- 02 FORMATEO STRINGS -------------------------------------
 
-def obtener_nombre(list_hero:list):
-    for hero in list_hero:
-        print(f'Nombre: {hero.get("nombre")}')
+def obtener_nombre(heroe: dict) -> str:
+    return f"Nombre: {heroe['nombre']}"
 
 def imprimir_dato(dato:str) -> str:
     print(dato)
@@ -305,10 +301,11 @@ def stark_normalizar_datos(list_hero:list):
 def stark_imprimir_nombres_heroes(list_hero:list) -> dict:
     if(len(list_hero) < 0):
         return(-1)
-    imprimir_dato(obtener_nombre(list_hero))
+    for hero in list_hero:
+        imprimir_dato(obtener_nombre(hero))
 
-def obtener_nombre_y_dato(dict_hero:dict, key:str) -> str:
-    return(f'Nombre: {dict_hero.get("nombre")} | {key}: {dict_hero.get(key)}')
+def obtener_nombre_y_dato(hero:list[dict], key:str) -> str:
+    return(f'Nombre: {hero["nombre"]} | {key}: {hero.get(key)}')
 
 
 def stark_imprimir_nombres_alturas(list_hero:list) -> str:
@@ -357,11 +354,37 @@ def calcular_max_min_dato(list_hero:list, max_min:str, key:str):
 def stark_calcular_imprimir_heroe(list_hero:list, max_min:str, key:str):
     if(len(list_hero) < 0):
         return(-1)
+    hero = calcular_max_min_dato(list_hero, max_min, key)
     match(max_min.capitalize()):
         case 'Maximo':
-            imprimir_dato(f'Mayor {key}: {obtener_nombre_y_dato({"nombre" : calcular_max_min_dato(list_hero, "Maximo", key)}, key)}')
+            imprimir_dato(f'Mayor {key}: {obtener_nombre_y_dato(hero, key)}')
         case 'Minimo':
-            imprimir_dato(f'Menor {key}: {obtener_nombre_y_dato({"nombre" : calcular_max_min_dato(list_hero, "Minimo", key)}, key)}')
+            imprimir_dato(f'Menor {key}: {obtener_nombre_y_dato(hero, key)}')
+    
+def sumar_dato_heroe(list_hero:list, key:str):
+    if(len(list_hero) < 0):
+        return(-1)
+    sumar = 0
+    list_refactor = stark_normalizar_datos(list_hero)
+    for hero in list_refactor:
+        sumar += hero.get(key)
+    return(sumar)
 
-print(stark_calcular_imprimir_heroe(lista_heroes, 'maximo', 'fuerza'))
-print(lista_heroes[0].get('fuerza'))
+def dividir(dividiendo:int, divisor:int) -> int:
+    if (divisor == 0):
+        return(0)
+    return(dividiendo/divisor)
+
+def calcular_promedio(list_hero:list, key:str) -> float:
+    promedio = dividir(sumar_dato_heroe(list_hero, key), len(list_hero))
+    return(promedio)
+
+
+def stark_calcular_imprimir_promedio_altura(list_hero:list) -> str:
+    if(len(list_hero) < 0):
+        return(-1)
+    suma = sumar_dato_heroe(list_hero, 'altura')
+    promedio = calcular_promedio(list_hero, 'altura')
+    imprimir_dato(suma)
+    imprimir_dato(promedio)
+
