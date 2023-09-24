@@ -1,7 +1,7 @@
 from fun_stark import *
 
 def impimir_menu() -> str:
-    imprimir_dato(
+    print_data(
 '''Menú:
     1. Imprimir nombres de héroes
     2. Imprimir nombres y alturas
@@ -27,19 +27,19 @@ def stark_marvel_app(list_hero:list):
         desire_option = stark_menu_principal()
         match int(desire_option):
                 case 1:
-                    stark_imprimir_nombres_heroes(list_hero)
+                    stark_print_hero_names(list_hero)
                     input('Press Enter to continue')
                 case 2:
-                    stark_imprimir_nombres_alturas(list_hero)
+                    stark_print_names_heights(list_hero)
                     input('Press Enter to continue')
                 case 3:
-                    stark_calcular_imprimir_heroe(list_hero, "maximo", "fuerza")
+                    stark_print_calculate_hero(list_hero, "maximo", "fuerza")
                     input('Press Enter to continue')
                 case 4:
-                    stark_calcular_imprimir_heroe(list_hero, "minimo", "fuerza")
+                    stark_print_calculate_hero(list_hero, "minimo", "fuerza")
                     input('Press Enter to continue')
                 case 5:
-                    stark_calcular_imprimir_promedio_altura(list_hero)
+                    stark_print_calculate_height_average(list_hero)
                     input('Press Enter to continue')
                 case 6:
                     flag = False
