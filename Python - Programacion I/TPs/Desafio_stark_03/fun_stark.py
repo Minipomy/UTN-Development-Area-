@@ -104,3 +104,50 @@ def stark_print_calculate_height_average(list_hero:list) -> str:
         return(-1)
     promedio = average_calculate(list_hero, 'altura')
     print_data(f'the average height is: {promedio:.2f}')
+
+def number_check(num_str:str):
+    return(num_str.isdigit())
+
+def imprimir_menu_2():
+    print_data(
+'''Menú:
+    1. Imprimir nombres de héroes
+    2. Imprimir nombres y alturas
+    3. Calcular e imprimir el héroe con el máximo dato
+    4. Calcular e imprimir el héroe con el mínimo dato
+    5. Calcular e imprimir el promedio de alturas
+    6. Salir\n''')
+
+def stark_menu_principal_2():
+    imprimir_menu_2()
+    desire_option = input('Please, select your desire option:\n')
+    while(number_check(desire_option) == False):
+            imprimir_menu_2()
+            desire_option = input('Wrong input, please try again:\n')
+    return(int(desire_option))
+
+def stark_marvel_app_2(list_hero:list):
+    flag = True
+    while(flag == True):
+        desire_option = stark_menu_principal_2()
+        match int(desire_option):
+                case 1:
+                    stark_print_hero_names(list_hero)
+                    input('Press Enter to continue')
+                case 2:
+                    stark_print_names_heights(list_hero)
+                    input('Press Enter to continue')
+                case 3:
+                    dato = input('select: fuerza, altura, peso, inteligencia')
+                    stark_print_calculate_hero(list_hero, "maximo", dato)
+                    input('Press Enter to continue')
+                case 4:
+                    dato = input('select: fuerza, altura, peso, inteligencia')
+                    stark_print_calculate_hero(list_hero, "minimo", dato)
+                    input('Press Enter to continue')
+                case 5:
+                    stark_print_calculate_height_average(list_hero)
+                    input('Press Enter to continue')
+                case 6:
+                    flag = False
+
