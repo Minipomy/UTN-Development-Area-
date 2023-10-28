@@ -38,8 +38,8 @@ Recibe dos parámetros (precio original y precio con descuento) y
 devuelve el porcentaje de descuento aplicado.
 '''
 
-def calcula_descuento_en_producto(precio_original, descuento):
-    descuento_aplicado = float(precio_original - (precio_original * (descuento/100)))
+def calcula_descuento_en_producto(precio_original:float, descuento:float) -> float:
+    descuento_aplicado = precio_original - (precio_original * (descuento/100))
     return(descuento_aplicado)
 
 

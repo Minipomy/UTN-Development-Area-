@@ -33,10 +33,12 @@ def stark_marvel_app(list_hero:list):
                     stark_print_names_heights(list_hero)
                     input('Press Enter to continue')
                 case 3:
-                    stark_print_calculate_hero(list_hero, "maximo", "fuerza")
+                    dato = input('select: fuerza, altura, peso, inteligencia')
+                    stark_print_calculate_hero(list_hero, "maximo", dato)
                     input('Press Enter to continue')
                 case 4:
-                    stark_print_calculate_hero(list_hero, "minimo", "fuerza")
+                    dato = input('select: fuerza, altura, peso, inteligencia')
+                    stark_print_calculate_hero(list_hero, "minimo", dato)
                     input('Press Enter to continue')
                 case 5:
                     stark_print_calculate_height_average(list_hero)
