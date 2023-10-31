@@ -3,12 +3,10 @@ def menu_initial_mensage() -> str:
                     '1.- List all Dream Team players.',
                     '2.- Show stats from a player. Allowing also to save into csv file (Optional)',
                     '3.- Search player by name.',
-                    '4.- ',
-                    '5.-',
-                    '6.-',
-                    '7.-',
-                    '8.-',
-                    '9.-Exit']
+                    '4.- Search and calculate points-per-match average of the Dream Team',
+                    '5.- Search player by name and validate if is a member of basketball fame',
+                    '6.- Search and calculate highest player with total bounces',
+                    '7.-Exit']
     for message in mm_message:
         print(message)
 

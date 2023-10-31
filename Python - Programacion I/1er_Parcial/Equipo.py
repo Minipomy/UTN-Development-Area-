@@ -1,6 +1,7 @@
 import re as regex
 import csv
-import json 
+import json
+import os
 from Jugador import Jugador
 
 class Equipo:
@@ -24,27 +25,46 @@ class Equipo:
 
     def save_player_stats(self, index:int):
         player = self.players[index]
-        with open(f'{player.name} - Stats.csv', mode="w", newline="") as csv_file:
-            column_names = ['nombre', 'posicion', 'temporadas', 'puntos_totales', 'promedio_puntos_por_partido',
-                          'rebotes_totales', 'promedio_rebotes_por_partido', 'asistencias_totales',
-                          'promedio_asistencias_por_partido', 'robos_totales', 'bloqueos_totales',
-                          'porcentaje_tiros_de_campo', 'porcentaje_tiros_libres', 'porcentaje_tiros_triples']
-            write = csv.DictWriter(csv_file, fieldnames=column_names)
-            write.writeheader()
-            write.writerow({'nombre': player.name,
-                             'posicion': player.position,
-                             'temporadas': player.stats.seasons,
-                             'puntos_totales': player.stats.total_points,
-                             'promedio_puntos_por_partido': player.stats.average_points_per_match,
-                             'rebotes_totales': player.stats.total_bounces,
-                             'promedio_rebotes_por_partido': player.stats.average_bounces_per_match,
-                             'asistencias_totales': player.stats.total_assists,
-                             'promedio_asistencias_por_partido': player.stats.average_assists_per_match,
-                             'robos_totales': player.stats.total_theft,
-                             'bloqueos_totales': player.stats.total_blocks,
-                             'porcentaje_tiros_de_campo': player.stats.percentaje_goal_throw,
-                             'porcentaje_tiros_libres': player.stats.percentaje_free_throw,
-                             'porcentaje_tiros_triples': player.stats.percentaje_triple_trow})
+        column_names = ['nombre', 'posicion', 'temporadas', 'puntos_totales', 'promedio_puntos_por_partido',
+                        'rebotes_totales', 'promedio_rebotes_por_partido', 'asistencias_totales',
+                        'promedio_asistencias_por_partido', 'robos_totales', 'bloqueos_totales',
+                        'porcentaje_tiros_de_campo', 'porcentaje_tiros_libres', 'porcentaje_tiros_triples']
+        # if not os.path.exists(f'data/Stats.csv'):
+            # with open(f'data/Stats.csv', mode="w", newline="") as csv_file:
+        with open(f'data/{player.name} - Stats.csv', mode="w", newline="") as csv_file:
+                write = csv.DictWriter(csv_file, fieldnames=column_names)
+                write.writeheader()
+                write.writerow({'nombre': player.name,
+                                'posicion': player.position,
+                                'temporadas': player.stats.seasons,
+                                'puntos_totales': player.stats.total_points,
+                                'promedio_puntos_por_partido': player.stats.average_points_per_match,
+                                'rebotes_totales': player.stats.total_bounces,
+                                'promedio_rebotes_por_partido': player.stats.average_bounces_per_match,
+                                'asistencias_totales': player.stats.total_assists,
+                                'promedio_asistencias_por_partido': player.stats.average_assists_per_match,
+                                'robos_totales': player.stats.total_theft,
+                                'bloqueos_totales': player.stats.total_blocks,
+                                'porcentaje_tiros_de_campo': player.stats.percentaje_goal_throw,
+                                'porcentaje_tiros_libres': player.stats.percentaje_free_throw,
+                                'porcentaje_tiros_triples': player.stats.percentaje_triple_trow})
+        # else:
+        #     with open(f'data/Stats.csv', mode="a", newline="") as csv_file:
+        #         write = csv.DictWriter(csv_file, fieldnames=column_names)
+        #         write.writerow({'nombre': player.name,
+        #                         'posicion': player.position,
+        #                         'temporadas': player.stats.seasons,
+        #                         'puntos_totales': player.stats.total_points,
+        #                         'promedio_puntos_por_partido': player.stats.average_points_per_match,
+        #                         'rebotes_totales': player.stats.total_bounces,
+        #                         'promedio_rebotes_por_partido': player.stats.average_bounces_per_match,
+        #                         'asistencias_totales': player.stats.total_assists,
+        #                         'promedio_asistencias_por_partido': player.stats.average_assists_per_match,
+        #                         'robos_totales': player.stats.total_theft,
+        #                         'bloqueos_totales': player.stats.total_blocks,
+        #                         'porcentaje_tiros_de_campo': player.stats.percentaje_goal_throw,
+        #                         'porcentaje_tiros_libres': player.stats.percentaje_free_throw,
+        #                         'porcentaje_tiros_triples': player.stats.percentaje_triple_trow})
 
     def search_player_by_name(self, name:str):
         re = regex.compile(name, regex.IGNORECASE)
