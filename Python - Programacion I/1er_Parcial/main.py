@@ -1,6 +1,7 @@
 import json
 import csv
 import re as regex
+from eng_strings import menu_initial_mensage, mm_bad_input, mm_save_stats, mm_search_by_name
 
 class Estadistica:
 
@@ -86,37 +87,21 @@ class Equipo:
                              'porcentaje_tiros_libres': player.stats.percentaje_free_throw,
                              'porcentaje_tiros_triples': player.stats.percentaje_triple_trow})
 
+    def search_player_by_name(self, name:str):
+        re = regex.compile(name, regex.IGNORECASE)
+        for index, jugador in enumerate(self.players):
+            if re.findall(jugador.name):
+                self.select_player(index)
+                # print('Error -Player not found-')
 
-
-def menu_initial_mensage() -> str:
-    mm_message = ['Please, choose an input from the following list:\n',
-                    '1.- List all Dream Team players.',
-                    '2.- Show stats from a player. Allowing also to save into csv file (Optional)',
-                    '3.- Search player by name.',
-                    '4.- ',
-                    '5.-',
-                    '6.-',
-                    '7.-',
-                    '8.-',
-                    '9.-Exit']
-    for message in mm_message:
-        print(message)
-
-def mm_bad_input() -> str:
-    message = f'Wrong, you enter a wrong selection. Kindly to try again'
-    print(message)
-
-def mm_save_stats() -> str:
-    message = f'Save stats to CSV file? Yes/No\n'
-    print(message)
-    
 if __name__ == '__main__':
     team = Equipo('dream_team.json')
 
     flag = True
     while(flag):
-        pattern = r'\b\d\b'
         desired_option = 0
+        digit_pattern = r'\b\d\b'
+        name_pattern = r'<((?:[a-z]+|\s)*)>'
         menu_initial_mensage()
         try:
             desired_option = int(input())
@@ -126,19 +111,30 @@ if __name__ == '__main__':
         match desired_option:
             case 1:
                 team.print_players()
+                input('Press enter key to continue...\n')
             case 2:
                 optional = 'No'
                 try:
                     chosen_player = int(input('Please, select a player by index\n'))
-                    if regex.match(pattern, str(chosen_player)):
+                    if regex.match(digit_pattern, str(chosen_player)):
                         print(team.players[chosen_player])
+                        input('Press enter key to continue...\n')
                 except ValueError as Error:
                     print(f'Handled Error\n{Error}\n')
                 mm_save_stats()
                 optional = input()
                 if(optional.capitalize() == 'Yes'):
                     team.save_player_stats(chosen_player)
-            case 3:pass
+                    input('Saved...\nPress enter key to continue...\n')
+            case 3:
+                mm_search_by_name()
+                try:
+                    input_value = str(input())
+                    team.search_player_by_name(input_value)
+                except ValueError as Error:
+                    print(f'Handled Error\n{Error}\n')
+                input('Press enter key to continue...\n')
             case 4:pass
             case 5:pass
-            case 9:flag = False
+            case 6:
+                flag = False
