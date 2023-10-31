@@ -1,4 +1,5 @@
 import re as regex
+import csv
 import json 
 from Jugador import Jugador
 
